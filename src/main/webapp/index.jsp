@@ -14,21 +14,31 @@
 	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 </head>
 <body>
-	<p>
-		<c:url value="getLearner" var="messageUrl" />
-		<a href="${messageUrl}">Click to get learner</a>
-	</p>
-	<p>
-		<c:url value="getTeacher" var="messageUrl" />
-		<a href="${messageUrl}">Click to get teacher</a>
-	</p>
 	<!-- angularjs part -->
 	<div ng-app="">
 		<p>
-			Name: <input type="text" ng-model="name">
+			Name: <input type="text" ng-model="teacher">
 		</p>
-		<p ng-bind="name"></p>
+		<p id="teacherid" ng-bind="teacher"></p>
+		<p2>			
+			<c:url var="messageUrl" value="teacher" >
+			    <c:param name="Add" value="${teacherid}" />
+			</c:url>
+			<a href="${messageUrl}">Click to get teacher</a>
+		</p2>
 	</div>
-	
+	<p>
+		<c:url value="learner" var="messageUrl" />
+		<a href="${messageUrl}">Click to get learner</a>
+	</p>
+	<p>
+		<c:url value="teacher/all" var="messageUrl" />
+		<a href="${messageUrl}">Click to get teachers</a>
+	</p>
+
+
+
+
+
 </body>
 </html>

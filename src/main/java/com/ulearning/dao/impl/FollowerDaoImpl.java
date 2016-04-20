@@ -5,14 +5,28 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceException;
 import javax.persistence.PersistenceUnit;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ulearning.dao.IFollowerDao;
 import com.ulearning.model.Training;
 
 @Repository("followerDao")
+@Transactional
 public class FollowerDaoImpl implements IFollowerDao {
 
+	@Autowired  
+	SessionFactory sessionFactory;  
+	 
+	private Session currentSession;   
+	
+	private Transaction currentTransaction;
+
+	
 	@PersistenceUnit
 	private EntityManagerFactory entityManagerFactory;
 
@@ -20,10 +34,15 @@ public class FollowerDaoImpl implements IFollowerDao {
 
 		return entityManagerFactory.createEntityManager();
 	}
+	
+	
 
 	public Long save(Training training) {
 
 		// after save, return generated ID
+		Session currentSession = sessionFactory.getCurrentSession();  
+	    currentSession.saveOrUpdate(training);  
+
 		return 0L;
 	}
 

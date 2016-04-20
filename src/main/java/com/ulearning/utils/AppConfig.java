@@ -13,6 +13,11 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -46,6 +51,9 @@ import com.ulearning.dao.impl.SkillDaoImpl;
 import com.ulearning.dao.impl.TeacherDaoImpl;
 import com.ulearning.dao.impl.TrainingDaoImpl;
 import com.ulearning.dao.impl.UserDaoImpl;
+import com.ulearning.delegate.LoginDelegate;
+import com.ulearning.model.Field;
+import com.ulearning.model.Follower;
 import com.ulearning.service.IFollowerService;
 import com.ulearning.service.ILearnerService;
 import com.ulearning.service.ILearningSessionService;
@@ -66,8 +74,6 @@ import com.ulearning.service.impl.TrainingServiceImpl;
 import com.ulearning.service.impl.UserServiceImpl;
 
 @EnableWebMvc
-// @ComponentScan(basePackages = { "com.ulearning.controller" }, excludeFilters
-// = { @Filter(type = FilterType.ANNOTATION, value = Configuration.class) })
 @ComponentScan(basePackages = "com.ulearning.utils")
 @Configuration
 @EnableAspectJAutoProxy
@@ -77,10 +83,10 @@ import com.ulearning.service.impl.UserServiceImpl;
 
 public class AppConfig extends WebMvcConfigurerAdapter {
 
-	private static final String PROPERTY_NAME_DATABASE_DRIVER = "db.driver";
-	private static final String PROPERTY_NAME_DATABASE_PASSWORD = "db.password";
-	private static final String PROPERTY_NAME_DATABASE_URL = "db.url";
-	private static final String PROPERTY_NAME_DATABASE_USERNAME = "db.username";
+	private static final String PROPERTY_NAME_DATABASE_DRIVER = "jdbc.driverClassName";// "db.driver";
+	private static final String PROPERTY_NAME_DATABASE_PASSWORD = "jdbc.password"; // "db.password";
+	private static final String PROPERTY_NAME_DATABASE_URL = "jdbc.url"; //"db.url";
+	private static final String PROPERTY_NAME_DATABASE_USERNAME = "jdbc.username"; //"db.username";
 	private static final String PROPERTY_NAME_HIBERNATE_DIALECT = "hibernate.dialect";
 	private static final String PROPERTY_NAME_HIBERNATE_SHOW_SQL = "hibernate.show_sql";
 	private static final String PROPERTY_NAME_ENTITYMANAGER_PACKAGES_TO_SCAN = "entitymanager.packages.to.scan";
@@ -111,7 +117,8 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/myResources/**").addResourceLocations("/resources/");
 	}
 
-	/*public DataSource dataSource() {
+	@Bean
+	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName(env.getRequiredProperty(PROPERTY_NAME_DATABASE_DRIVER));
 		dataSource.setUrl(env.getRequiredProperty(PROPERTY_NAME_DATABASE_URL));
@@ -120,8 +127,17 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 
 		return (DataSource) dataSource;
 	}
+	@Bean  
+	public LocalSessionFactoryBean sessionFactory() {  
+	     LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();  
+	     sessionFactory.setDataSource(dataSource());  
+	     sessionFactory.setPackagesToScan(new String[] { "com.ulearning" });  
+	     sessionFactory.setHibernateProperties(hibernateProperties());  
+	  
+	     return sessionFactory;  
+	} 
 
-	/*@Bean
+	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
 		LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
 		entityManagerFactoryBean.setDataSource(dataSource());
@@ -129,24 +145,25 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 		entityManagerFactoryBean
 				.setPackagesToScan(env.getRequiredProperty(PROPERTY_NAME_ENTITYMANAGER_PACKAGES_TO_SCAN));
 
-		entityManagerFactoryBean.setJpaProperties(hibProperties());
+		entityManagerFactoryBean.setJpaProperties(hibernateProperties());
 
 		return entityManagerFactoryBean;
-	}*/
+	} 
 
-	private Properties hibProperties() {
+	private Properties hibernateProperties() {
 		Properties properties = new Properties();
-		properties.put(PROPERTY_NAME_HIBERNATE_DIALECT,	env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_DIALECT));
+		properties.put(PROPERTY_NAME_HIBERNATE_DIALECT, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_DIALECT));
 		properties.put(PROPERTY_NAME_HIBERNATE_SHOW_SQL, env.getRequiredProperty(PROPERTY_NAME_HIBERNATE_SHOW_SQL));
 		return properties;
 	}
 
-	/*
-	 * @Bean public JpaTransactionManager transactionManager() {
-	 * JpaTransactionManager transactionManager = new JpaTransactionManager();
-	 * transactionManager.setEntityManagerFactory(entityManagerFactory().
-	 * getObject()); return transactionManager; }
-	 */
+	@Bean
+	public JpaTransactionManager transactionManager() {
+		JpaTransactionManager transactionManager = new JpaTransactionManager();
+		transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
+		return transactionManager;
+	}
+	 
 	@Bean
 	public ResourceBundleMessageSource messageSource() {
 		ResourceBundleMessageSource source = new ResourceBundleMessageSource();
@@ -267,10 +284,17 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	public ITrainingDao trainingDao() {
 		return new TrainingDaoImpl();
 	}
-	/*
+	
 	@Bean(name="field")
 	public Field field(){
 		return new Field();
-	} */
-	
+	} 
+	@Bean(name="follower")
+	public Follower follower(){
+		return new Follower();
+	} 
+	@Bean(name = "loginDelegate")
+	public LoginDelegate loginDelegate() {
+		return new LoginDelegate();
+	}
 }

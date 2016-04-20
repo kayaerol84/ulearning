@@ -7,11 +7,11 @@ import javax.persistence.Table;
 
 /**
  * Bookmarks of a user
- * @author e1070269
+ * @author erol
  *
  */
-@Entity
-@Table
+//@Entity
+//@Table
 public class LearnerList {
 
 	private User user;

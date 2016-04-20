@@ -6,18 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ulearning.dao.IFollowerDao;
 import com.ulearning.dao.IRequestDao;
-import com.ulearning.model.Follower;
-import com.ulearning.model.Learner;
 import com.ulearning.model.Request;
 import com.ulearning.model.Teacher;
 import com.ulearning.model.Training;
 import com.ulearning.model.User;
-import com.ulearning.service.IFollowerService;
 import com.ulearning.service.IRequestService;
 
-@Service("followerService")
+@Service("requestService")
 @Transactional
 public class RequestServiceImpl implements IRequestService{
 
@@ -26,12 +22,6 @@ public class RequestServiceImpl implements IRequestService{
 
 	@Override
 	public void requestTeacher(User user, Teacher teacher) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void requestLearner(User user, Learner teacher) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -53,7 +43,32 @@ public class RequestServiceImpl implements IRequestService{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public Request getRequest(Long requestId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Request> getRequestsByUser(Long userid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Request> getRequestsByTraining(Long trainingId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public IRequestDao getRequestDao() {
+		return requestDao;
+	}
+
+	public void setRequestDao(IRequestDao requestDao) {
+		this.requestDao = requestDao;
+	}
 	
-		
-	
+
 }

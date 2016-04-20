@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name="Training")
-@XmlRootElement(name="Training")
+@XmlRootElement(name="Training") //only needed if we also want to generate XML
 public class Training {
 
 	@Id
@@ -31,19 +31,18 @@ public class Training {
 	@JoinColumn(name="teacher_id")
 	private Teacher teacher;
 	
-	
-	/* totally bullshit @ManyToMany
-	@JoinTable(name="trainingSessions", joinColumns={@JoinColumn(name="training_id", referencedColumnName="id")},
-				inverseJoinColumns={@JoinColumn(name="learning_session_id", referencedColumnName="id")})*/
 	@OneToMany(mappedBy="training")	
 	private List<LearningSession> learningSessons;
 	
 	@Column(precision=25,scale=2)
 	private BigDecimal requestedPrice;
+	
 	@Basic
 	private Long duration;
+	
 	@Basic
 	private Boolean available;
+	
 	// TODO
 	@ManyToMany
 	@JoinTable(
@@ -51,6 +50,9 @@ public class Training {
 		      joinColumns=@JoinColumn(name="training_id", referencedColumnName="id"),
 		      inverseJoinColumns=@JoinColumn(name="learner_id", referencedColumnName="id"))
 	private List<Learner> subscribers;
+	
+	@ManyToOne
+	@JoinColumn(name = "field_id", referencedColumnName = "id")
 	private Field fieldOfTraining;
 	/*
 	 * bu egitim icin istenen ucret
@@ -64,6 +66,9 @@ public class Training {
 		this.id = id;
 		this.teacher = teacher;
 		this.fieldOfTraining = fieldOfTraining;
+	}
+	public Training() {
+		
 	}
 	
 	public Long getId() {

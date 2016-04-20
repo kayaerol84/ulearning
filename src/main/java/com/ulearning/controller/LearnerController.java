@@ -17,7 +17,7 @@ public class LearnerController {
 	@Qualifier("learnerService")
 	private ILearnerService learnerService;
 	
-	@RequestMapping(value="/getLearner")
+	@RequestMapping(value="/learner")
 	@Produces("application/json")
 	public String findLearner(Model input) {
 		input.addAttribute("message", "Dummy Learner");

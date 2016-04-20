@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -20,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name="Field") 
-@XmlRootElement(name="Field")
+@XmlRootElement(name="Field") //only needed if we also want to generate XML
 //@Table(indexes={@Index (name="pmx_id", columnNames="id")}, appliesTo = "Field")
 public class Field {
 	
@@ -32,11 +33,16 @@ public class Field {
 	
 	// TODO 
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	@JoinColumn(name="parentFieldId", updatable=false)
+	@JoinColumn(name="parent_field_id", updatable=false)
 	private List<Field> subFields;
 	
-	@Column(name="parentFieldId")
+	@ManyToOne 
+	@JoinColumn(name="parent_field_id", referencedColumnName = "id")
 	private Field parentField;
+	
+	public Field() {
+		// JPA only
+	}
 	
 	public boolean isParent(){
 		return parentField == null;

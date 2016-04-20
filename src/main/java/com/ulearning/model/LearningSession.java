@@ -25,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name="Session")
-@XmlRootElement(name="LearningSession")
+@XmlRootElement(name="LearningSession") //only needed if we also want to generate XML
 public class LearningSession {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

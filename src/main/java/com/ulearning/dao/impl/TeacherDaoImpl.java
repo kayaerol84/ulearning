@@ -5,11 +5,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceException;
 import javax.persistence.PersistenceUnit;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.ulearning.dao.IFollowerDao;
 import com.ulearning.dao.ITeacherDao;
-import com.ulearning.model.Training;
+import com.ulearning.model.Teacher;
 
 @Repository("teacherDao")
 public class TeacherDaoImpl implements ITeacherDao {
@@ -17,25 +18,28 @@ public class TeacherDaoImpl implements ITeacherDao {
 	@PersistenceUnit
 	private EntityManagerFactory entityManagerFactory;
 
+	@Autowired
+	SessionFactory sessionFactory;
+	
 	protected EntityManager getEntityManager() {
 
 		return entityManagerFactory.createEntityManager();
 	}
 
-	public Long save(Training training) {
+	public void save(Teacher teacher) {
 
 		// after save, return generated ID
-		return 0L;
+		//return 0L;
 	}
 
-	public void update(Training training) {
+	public void update(Teacher teacher) {
 		
 		EntityManager entityManager = getEntityManager(); 
 
 		try { 
             entityManager.getTransaction().begin(); 
  
-            entityManager.merge(training); 
+            entityManager.merge(teacher); 
  
             entityManager.getTransaction().commit(); 
         } catch (PersistenceException exc) { 
@@ -46,7 +50,7 @@ public class TeacherDaoImpl implements ITeacherDao {
         }
 	}
 
-	public Training get(Long id) {
+	public Teacher find(Long id) {
 		return null;
 	}
 

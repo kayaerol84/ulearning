@@ -35,7 +35,7 @@ public class Ranking {
 	private User rankedByUser;
 
 	@Enumerated(EnumType.STRING)
-	private String rankType;
+	private RankingType rankType;
 
 	// it might be out of 5, 10 or 100
 	@Column(precision=3, scale=5)
