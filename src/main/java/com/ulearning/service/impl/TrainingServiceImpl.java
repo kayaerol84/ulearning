@@ -16,7 +16,7 @@ import com.ulearning.model.Training;
 import com.ulearning.service.ILearnerService;
 import com.ulearning.service.ITrainingService;
 
-@Service
+@Service("trainingService")
 @Transactional
 public class TrainingServiceImpl implements ITrainingService{
 

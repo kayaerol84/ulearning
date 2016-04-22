@@ -13,7 +13,7 @@ import com.ulearning.model.Skill;
 import com.ulearning.model.User;
 import com.ulearning.service.IUserService;
 
-@Service
+@Service("userService")
 @Transactional
 public class UserServiceImpl implements IUserService {
 

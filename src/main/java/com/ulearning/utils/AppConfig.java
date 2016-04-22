@@ -13,6 +13,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -74,11 +75,11 @@ import com.ulearning.service.impl.TrainingServiceImpl;
 import com.ulearning.service.impl.UserServiceImpl;
 
 @EnableWebMvc
-@ComponentScan(basePackages = "com.ulearning.utils")
+@ComponentScan(basePackages = "com.ulearning")
 @Configuration
 @EnableAspectJAutoProxy
 @PropertySource("WEB-INF/application.properties")
-//@EnableJpaRepositories("com.ulearning.model")
+@EnableJpaRepositories("com.ulearning.model")
 @EnableTransactionManagement
 
 public class AppConfig extends WebMvcConfigurerAdapter {
@@ -205,7 +206,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	public LearningSessionController learningSessionController() {
 		return new LearningSessionController();
 	}
-	
+	/*
 	@Bean(name="followerService")
 	public IFollowerService followerService() {
 		return new FollowerServiceImpl();
@@ -296,5 +297,5 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	@Bean(name = "loginDelegate")
 	public LoginDelegate loginDelegate() {
 		return new LoginDelegate();
-	}
+	} */
 }

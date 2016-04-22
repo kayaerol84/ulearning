@@ -6,7 +6,9 @@ import org.springframework.stereotype.Component;
 import com.ulearning.controller.FollowerController;
 import com.ulearning.controller.LearnerController;
 import com.ulearning.controller.LearningSessionController;
+import com.ulearning.controller.LoginController;
 import com.ulearning.controller.PaymentController;
+import com.ulearning.controller.RequestController;
 import com.ulearning.controller.TeacherController;
 import com.ulearning.controller.TrainingController;
 import com.ulearning.controller.UserController;
@@ -21,6 +23,8 @@ public class MainBean {
 	private FollowerController followerController;
 	private TrainingController trainingController;
 	private LearningSessionController learningSessionController;
+	private RequestController requestController;
+	private LoginController loginController;
 	
 	public LearnerController getLearnerController() {
 		return learnerController;
@@ -72,6 +76,21 @@ public class MainBean {
 	public void setPaymentController(PaymentController paymentController) {
 		this.paymentController = paymentController;
 	}
+	public RequestController getRequestController() {
+		return requestController;
+	}
+	@Autowired
+	public void setRequestController(RequestController requestController) {
+		this.requestController = requestController;
+	}
+	public LoginController getLoginController() {
+		return loginController;
+	}
+	@Autowired
+	public void setLoginController(LoginController loginController) {
+		this.loginController = loginController;
+	}
+	
 		
 
 }

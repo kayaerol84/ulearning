@@ -10,7 +10,7 @@ import com.ulearning.dao.IPaymentDao;
 import com.ulearning.model.Payment;
 import com.ulearning.service.IPaymentService;
 
-@Service
+@Service("paymentService")
 @Transactional
 public class PaymentServiceImpl implements IPaymentService{
 

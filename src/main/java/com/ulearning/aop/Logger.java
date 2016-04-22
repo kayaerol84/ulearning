@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Aspect
 public class Logger {
-	
+	/*
 	@After("execution")
 	public void trace() {
 		
@@ -28,6 +28,6 @@ public class Logger {
 			// TODO: handle exception
 			System.out.println("exception in method" + e.getMessage());
 		}
-	}
+	}*/
 
 }

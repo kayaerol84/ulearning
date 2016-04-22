@@ -11,7 +11,7 @@ import com.ulearning.model.Skill;
 import com.ulearning.model.User;
 import com.ulearning.service.ISkillService;
 
-@Service
+@Service("skillService")
 @Transactional
 public class SkillServiceImpl implements ISkillService{
 
