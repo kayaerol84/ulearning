@@ -1,9 +1,18 @@
 package com.ulearning.dao;
 
-import org.springframework.data.repository.CrudRepository;
+import java.util.List;
 
 import com.ulearning.model.Follower;
+import com.ulearning.model.User;
 
-public interface IFollowerDao { // extends JpaRepository<Follower, Long>{
+public interface IFollowerDao {
+
+	void createFollower(Follower follower); // extends JpaRepository<Follower, Long>{
+
+	void followUser(User user, User teacherOrLearner);
+
+	List<User> getFollowers(Long userId);
+
+	List<User> getFollowedUsers(Long userId);
 
 }

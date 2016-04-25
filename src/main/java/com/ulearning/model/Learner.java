@@ -17,6 +17,8 @@ public class Learner extends User{
 	
 	@Column(precision=3, scale=5) 
 	private Float avarageScore;
+	@Column(name="CityBorn", columnDefinition="default 'SANDNESS'")
+    private String cityBorn;
 	
 	@OneToMany
 	private List<Training> subscribedTrainings;

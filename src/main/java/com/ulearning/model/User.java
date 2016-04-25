@@ -28,6 +28,12 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "User") // only needed if we also want to generate XML
 public class User {
 	
+	
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

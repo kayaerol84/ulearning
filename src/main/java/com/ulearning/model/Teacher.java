@@ -16,6 +16,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="Teacher")
 public class Teacher extends User{
 	
+	public Teacher() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	// private Long userId
 	/*private String name;
 	private String surname;

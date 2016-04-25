@@ -1,5 +1,8 @@
 package com.ulearning.dao.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceException;
@@ -13,7 +16,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ulearning.dao.IFollowerDao;
+import com.ulearning.model.Follower;
 import com.ulearning.model.Training;
+import com.ulearning.model.User;
 
 @Repository("followerDao")
 @Transactional
@@ -65,6 +70,44 @@ public class FollowerDaoImpl implements IFollowerDao {
 	}
 
 	public Training get(Long id) {
+		return null;
+	}
+
+
+
+	@Override
+	public void createFollower(Follower follower) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void followUser(User user, User teacherOrLearner) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public List<User> getFollowers(Long userId) {
+		// TODO Auto-generated method stub
+		User user = new User();
+		user.setId(userId);
+		user.setName("Erol");
+		
+		List<User> users = new ArrayList<>();
+		users.add(user);
+		return users;
+	}
+
+
+
+	@Override
+	public List<User> getFollowedUsers(Long userId) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
