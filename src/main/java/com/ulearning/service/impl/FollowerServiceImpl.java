@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ulearning.dao.IFollowerDao;
+import com.ulearning.dao.ITeacherDao;
 import com.ulearning.model.Follower;
 import com.ulearning.model.Learner;
 import com.ulearning.model.Teacher;
@@ -19,6 +20,8 @@ public class FollowerServiceImpl implements IFollowerService{
 
 	@Autowired
 	private IFollowerDao followerDao;
+	
+	private ITeacherDao teacherDao;
 	
 	@Override
 	public void createFollower(Follower follower) {
@@ -41,6 +44,8 @@ public class FollowerServiceImpl implements IFollowerService{
 	@Override
 	public List<User> getFollowers(Long userId) {
 		// TODO Auto-generated method stub
+
+		teacherDao.update(new Teacher());
 		return followerDao.getFollowers(userId);
 		
 	}

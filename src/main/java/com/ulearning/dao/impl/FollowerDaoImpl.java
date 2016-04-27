@@ -10,7 +10,6 @@ import javax.persistence.PersistenceUnit;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,11 +24,7 @@ import com.ulearning.model.User;
 public class FollowerDaoImpl implements IFollowerDao {
 
 	@Autowired  
-	SessionFactory sessionFactory;  
-	 
-	private Session currentSession;   
-	
-	private Transaction currentTransaction;
+	SessionFactory sessionFactory;
 
 	
 	@PersistenceUnit
@@ -42,23 +37,23 @@ public class FollowerDaoImpl implements IFollowerDao {
 	
 	
 
-	public Long save(Training training) {
+	public Long save(Follower follower) {
 
 		// after save, return generated ID
 		Session currentSession = sessionFactory.getCurrentSession();  
-	    currentSession.saveOrUpdate(training);  
+	    currentSession.saveOrUpdate(follower);  
 
 		return 0L;
 	}
 
-	public void update(Training training) {
+	public void update(Follower follower) {
 		
 		EntityManager entityManager = getEntityManager(); 
 
 		try { 
             entityManager.getTransaction().begin(); 
  
-            entityManager.merge(training); 
+            entityManager.merge(follower); 
  
             entityManager.getTransaction().commit(); 
         } catch (PersistenceException exc) { 

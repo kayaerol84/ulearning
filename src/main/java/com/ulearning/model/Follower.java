@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table
-@XmlRootElement(name="Follower") //only needed if we also want to generate XML
+//@XmlRootElement(name="Follower") //only needed if we also want to generate XML
 public class Follower {
 
 	@Id

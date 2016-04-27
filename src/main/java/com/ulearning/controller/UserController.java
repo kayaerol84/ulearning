@@ -20,11 +20,11 @@ public class UserController {
 	@Autowired
 	@Qualifier("userService")
 	private IUserService userService;
-	
+
 	@GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public User getDefaultUserInJSON() {
-        UserServiceImpl userService1 = new UserServiceImpl();
-        return null; //userService.getDefaultUser();
-    }
+	@Produces(MediaType.APPLICATION_JSON)
+	public User getDefaultUserInJSON() {
+		UserServiceImpl userService1 = new UserServiceImpl();
+		return null; // userService.getDefaultUser();
+	}
 }

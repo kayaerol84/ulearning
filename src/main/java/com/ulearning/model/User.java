@@ -1,5 +1,7 @@
 package com.ulearning.model;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -22,10 +24,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-@Table(name = "User")
+@Table(name = "Users")
 @Inheritance(strategy = InheritanceType.JOINED)
-@XmlRootElement(name = "User") // only needed if we also want to generate XML
+//@XmlRootElement(name = "User") // only needed if we also want to generate XML
 public class User {
 	
 	
@@ -47,34 +51,52 @@ public class User {
 	@Basic
 	private String surname;
 	
-	// TODO
-	//@JsonIgnore
-	private String password;
 	@Basic
-	private Date dateOfBirth;
+	private String email;
+	
+	// TODO
+	@JsonIgnore
+	private String password;
 
-	// ara tablo
+	@Temporal(TemporalType.DATE)
+	@Column(name="birth_date")
+	private Date birthDate;
+
 	@ManyToMany
-	@JoinTable(name = "user_skills", joinColumns = {
-			@JoinColumn(name = "user_id", referencedColumnName = "id") }, inverseJoinColumns = {
-					@JoinColumn(name = "skill_id", referencedColumnName = "id") })
+	@JoinTable(name = "user_skills", 
+	joinColumns = { @JoinColumn(name = "user_id", referencedColumnName = "id") }, 
+	inverseJoinColumns = { @JoinColumn(name = "skill_id", referencedColumnName = "id") })
 	private List<Skill> skills;
 
 	// TODO how to endorse a user
-	@Basic
+	// trigger on Ranking table
+	@Column(precision=3, scale=5) 
 	private Float averageScore;
 
 	@OneToMany(mappedBy = "userId")	
 	private List<Address> addresses;
 
 	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="current_address_id")
-	private Address location;
+	@JoinColumn(name="primary_address_id")
+	private Address primaryLocation;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="creation_date")
+	private Date creationDate;
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="last_update_date")
 	private Date lastUpdateDate;
 
+	@Basic
+	private boolean enabled;
+
+    @ManyToMany
+    @JoinTable(name = "users_roles", 
+      joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id") , 
+      inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id") )
+    private Collection<Role> roles;
+	
 	public Long getId() {
 		return id;
 	}
@@ -107,14 +129,6 @@ public class User {
 		this.password = password;
 	}
 
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-
 	public List<Skill> getSkills() {
 		return skills;
 	}
@@ -139,14 +153,6 @@ public class User {
 		this.addresses = addresses;
 	}
 
-	public Address getLocation() {
-		return location;
-	}
-
-	public void setLocation(Address location) {
-		this.location = location;
-	}
-
 	public String getUsername() {
 		return username;
 	}
@@ -162,5 +168,53 @@ public class User {
 	public void setLastUpdateDate(Date lastUpdateDate) {
 		this.lastUpdateDate = lastUpdateDate;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public Address getPrimaryLocation() {
+		return primaryLocation;
+	}
+
+	public void setPrimaryLocation(Address primaryLocation) {
+		this.primaryLocation = primaryLocation;
+	}
+
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public Collection<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Collection<Role> roles) {
+		this.roles = roles;
+	}	
 	
 }

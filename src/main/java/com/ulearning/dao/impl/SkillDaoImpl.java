@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ulearning.dao.IFollowerDao;
 import com.ulearning.dao.ISkillDao;
+import com.ulearning.model.Skill;
 import com.ulearning.model.Training;
 
 @Repository("skillDao")
@@ -27,20 +28,20 @@ public class SkillDaoImpl implements ISkillDao {
 		return entityManagerFactory.createEntityManager();
 	}
 
-	public Long save(Training training) {
+	public Long save(Skill skill) {
 
 		// after save, return generated ID
 		return 0L;
 	}
 
-	public void update(Training training) {
+	public void update(Skill skill) {
 		
 		EntityManager entityManager = getEntityManager(); 
 
 		try { 
             entityManager.getTransaction().begin(); 
  
-            entityManager.merge(training); 
+            entityManager.merge(skill); 
  
             entityManager.getTransaction().commit(); 
         } catch (PersistenceException exc) { 
@@ -51,7 +52,7 @@ public class SkillDaoImpl implements ISkillDao {
         }
 	}
 
-	public Training get(Long id) {
+	public Skill get(Long id) {
 		return null;
 	}
 

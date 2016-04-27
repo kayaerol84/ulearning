@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ulearning.dao.IFollowerDao;
 import com.ulearning.dao.ILearningSessionDao;
+import com.ulearning.model.LearningSession;
 import com.ulearning.model.Training;
 
 @Repository("learningSessionDao")
@@ -26,20 +27,20 @@ public class LearningSessionDaoImpl implements ILearningSessionDao {
 		return entityManagerFactory.createEntityManager();
 	}
 
-	public Long save(Training training) {
+	public Long save(LearningSession training) {
 
 		// after save, return generated ID
 		return 0L;
 	}
 
-	public void update(Training training) {
+	public void update(LearningSession learningSession) {
 		
 		EntityManager entityManager = getEntityManager(); 
 
 		try { 
             entityManager.getTransaction().begin(); 
  
-            entityManager.merge(training); 
+            entityManager.merge(learningSession); 
  
             entityManager.getTransaction().commit(); 
         } catch (PersistenceException exc) { 
@@ -50,7 +51,7 @@ public class LearningSessionDaoImpl implements ILearningSessionDao {
         }
 	}
 
-	public Training get(Long id) {
+	public LearningSession get(Long id) {
 		return null;
 	}
 

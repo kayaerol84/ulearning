@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,15 +13,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.xml.bind.annotation.XmlRootElement;
-
-//import org.hibernate.annotations.Index;
-//import org.hibernate.annotations.Table;
 
 @Entity
 @Table(name="Field") 
-@XmlRootElement(name="Field") //only needed if we also want to generate XML
-//@Table(indexes={@Index (name="pmx_id", columnNames="id")}, appliesTo = "Field")
+//@XmlRootElement(name="Field") //only needed if we also want to generate XML
 public class Field {
 	
 	@Id

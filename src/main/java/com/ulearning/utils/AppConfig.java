@@ -1,5 +1,6 @@
 package com.ulearning.utils;
 
+import java.util.Locale;
 import java.util.Properties;
 
 import javax.annotation.Resource;
@@ -18,61 +19,13 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
-import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import org.springframework.web.servlet.view.JstlView;
-import org.springframework.web.servlet.view.UrlBasedViewResolver;
-
-import com.ulearning.controller.FollowerController;
-import com.ulearning.controller.LearnerController;
-import com.ulearning.controller.LearningSessionController;
-import com.ulearning.controller.PaymentController;
-import com.ulearning.controller.TeacherController;
-import com.ulearning.controller.TrainingController;
-import com.ulearning.controller.UserController;
-import com.ulearning.dao.IFollowerDao;
-import com.ulearning.dao.ILearnerDao;
-import com.ulearning.dao.ILearningSessionDao;
-import com.ulearning.dao.IPaymentDao;
-import com.ulearning.dao.IRequestDao;
-import com.ulearning.dao.ISkillDao;
-import com.ulearning.dao.ITeacherDao;
-import com.ulearning.dao.ITrainingDao;
-import com.ulearning.dao.IUserDao;
-import com.ulearning.dao.impl.FollowerDaoImpl;
-import com.ulearning.dao.impl.LearnerDaoImpl;
-import com.ulearning.dao.impl.LearningSessionDaoImpl;
-import com.ulearning.dao.impl.PaymentDaoImpl;
-import com.ulearning.dao.impl.RequestDaoImpl;
-import com.ulearning.dao.impl.SkillDaoImpl;
-import com.ulearning.dao.impl.TeacherDaoImpl;
-import com.ulearning.dao.impl.TrainingDaoImpl;
-import com.ulearning.dao.impl.UserDaoImpl;
-import com.ulearning.delegate.LoginDelegate;
-import com.ulearning.model.Field;
-import com.ulearning.model.Follower;
-import com.ulearning.service.IFollowerService;
-import com.ulearning.service.ILearnerService;
-import com.ulearning.service.ILearningSessionService;
-import com.ulearning.service.IPaymentService;
-import com.ulearning.service.IRequestService;
-import com.ulearning.service.ISkillService;
-import com.ulearning.service.ITeacherService;
-import com.ulearning.service.ITrainingService;
-import com.ulearning.service.IUserService;
-import com.ulearning.service.impl.FollowerServiceImpl;
-import com.ulearning.service.impl.LearnerServiceImpl;
-import com.ulearning.service.impl.LearningSessionServiceImpl;
-import com.ulearning.service.impl.PaymentServiceImpl;
-import com.ulearning.service.impl.RequestServiceImpl;
-import com.ulearning.service.impl.SkillServiceImpl;
-import com.ulearning.service.impl.TeacherServiceImpl;
-import com.ulearning.service.impl.TrainingServiceImpl;
-import com.ulearning.service.impl.UserServiceImpl;
 
 @EnableWebMvc
 @ComponentScan(basePackages = "com.ulearning")
@@ -177,4 +130,10 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 	public MainBean getMainBean() {
 		return new MainBean();
 	}
+	@Bean
+    public LocaleResolver localeResolver() {
+        final CookieLocaleResolver cookieLocaleResolver = new CookieLocaleResolver();
+        cookieLocaleResolver.setDefaultLocale(Locale.ENGLISH);
+        return cookieLocaleResolver;
+    }
 }

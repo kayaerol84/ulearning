@@ -24,8 +24,8 @@ import javax.validation.constraints.Digits;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-@Table(name="Session")
-@XmlRootElement(name="LearningSession") //only needed if we also want to generate XML
+@Table(name="learning_session")
+//@XmlRootElement(name="learning_session") //only needed if we also want to generate XML
 public class LearningSession {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

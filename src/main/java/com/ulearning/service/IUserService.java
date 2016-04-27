@@ -9,7 +9,7 @@ import com.ulearning.model.User;
 public interface IUserService {
 
 	User getUser(Long userid);
-	void addUser(User user);
+	User addUser(User user);
 	List<User> getUsersByLocation(Address location);
 	List<User> getUsersByName(String name);
 	List<User> getUsersBySkill(Skill skill);

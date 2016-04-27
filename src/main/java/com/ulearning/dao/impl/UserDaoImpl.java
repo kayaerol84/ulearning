@@ -1,18 +1,9 @@
 package com.ulearning.dao.impl;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceException;
-import javax.persistence.PersistenceUnit;
-import javax.sql.DataSource;
-
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
@@ -49,11 +40,11 @@ public class UserDaoImpl implements IUserDao {
 	}*/
 
 	@Override
-	public Long save(User user) {
+	public User save(User user) {
 
 		// after save, return generated ID
-		getSession().save(user);
-		return 1L;		
+		User newUser = (User) getSession().save(user);
+		return newUser;		
 	}
 	@Override
 	public void saveOrUpdate(User entity) {
@@ -135,6 +126,12 @@ public class UserDaoImpl implements IUserDao {
 	public Session getSession() {
         return sessionFactory.getCurrentSession();
     }
+
+	@Override
+	public User findByEmail(String email) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }

@@ -3,6 +3,7 @@ package com.ulearning.utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.ulearning.controller.FeedbackController;
 import com.ulearning.controller.FollowerController;
 import com.ulearning.controller.LearnerController;
 import com.ulearning.controller.LearningSessionController;
@@ -25,6 +26,7 @@ public class MainBean {
 	private LearningSessionController learningSessionController;
 	private RequestController requestController;
 	private LoginController loginController;
+	private FeedbackController feedbackController;
 	
 	public LearnerController getLearnerController() {
 		return learnerController;
@@ -90,7 +92,11 @@ public class MainBean {
 	public void setLoginController(LoginController loginController) {
 		this.loginController = loginController;
 	}
-	
-		
-
+	public FeedbackController getFeedbackController() {
+		return feedbackController;
+	}
+	@Autowired
+	public void setFeedbackController(FeedbackController feedbackController) {
+		this.feedbackController = feedbackController;
+	}
 }

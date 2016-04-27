@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ulearning.dao.IFollowerDao;
 import com.ulearning.dao.IPaymentDao;
+import com.ulearning.model.Payment;
 import com.ulearning.model.Training;
 
 @Repository("paymentDao")
@@ -26,20 +27,20 @@ public class PaymentDaoImpl implements IPaymentDao {
 		return entityManagerFactory.createEntityManager();
 	}
 
-	public Long save(Training training) {
+	public Long save(Payment payment) {
 
 		// after save, return generated ID
 		return 0L;
 	}
 
-	public void update(Training training) {
+	public void update(Payment payment) {
 		
 		EntityManager entityManager = getEntityManager(); 
 
 		try { 
             entityManager.getTransaction().begin(); 
  
-            entityManager.merge(training); 
+            entityManager.merge(payment); 
  
             entityManager.getTransaction().commit(); 
         } catch (PersistenceException exc) { 
@@ -50,7 +51,7 @@ public class PaymentDaoImpl implements IPaymentDao {
         }
 	}
 
-	public Training get(Long id) {
+	public Payment get(Long id) {
 		return null;
 	}
 

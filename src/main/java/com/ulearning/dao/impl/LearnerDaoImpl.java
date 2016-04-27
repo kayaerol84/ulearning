@@ -1,16 +1,11 @@
 package com.ulearning.dao.impl;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceException;
-import javax.persistence.PersistenceUnit;
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.ulearning.dao.IFollowerDao;
 import com.ulearning.dao.ILearnerDao;
+import com.ulearning.model.Learner;
 import com.ulearning.model.Training;
 
 @Repository("learnerDao")
@@ -26,13 +21,13 @@ public class LearnerDaoImpl implements ILearnerDao {
 	@Autowired
 	SessionFactory sessionFactory; 
 
-	public Long save(Training training) {
+	public Long save(Learner learner) {
 
 		// after save, return generated ID
 		return 0L;
 	}
 
-	public void update(Training training) {
+	public void update(Learner learner) {
 		
 		/*EntityManager entityManager = getEntityManager(); 
 
@@ -50,7 +45,7 @@ public class LearnerDaoImpl implements ILearnerDao {
         }**/
 	}
 
-	public Training get(Long id) {
+	public Learner get(Long id) {
 		return null;
 	}
 
