@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <authentication-manager>
+	<authentication-provider>
+		<password-encoder ref="encoder" />
+	</authentication-provider>
+</authentication-manager> -->
+<authentication-manager>
+    <authentication-provider ref="authProvider" />
+</authentication-manager>
+
+<!-- <bean id="authProvider"
+	class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+	<property name="userDetailsService" ref="customUserService" />
+	<property name="passwordEncoder" ref="encoder" />
+</bean> 
+
+<bean id="encoder"
+	class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" 
+
+	<bean />
+-->
