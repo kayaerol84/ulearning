@@ -14,11 +14,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Digits;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table
-@XmlRootElement(name="Payment") //only needed if we also want to generate XML
 public class Payment { 
 	
 	@Id
@@ -26,11 +24,11 @@ public class Payment {
 	private Long id;	
 	
 	@Digits(integer=25, fraction=2)
-	@Column(name = "ACTUAL_COST", precision = 25, scale = 2, nullable = false)
+	@Column(name = "payment_amount", precision = 25, scale = 2, nullable = false)
 	private BigDecimal amount;
 	
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "start_date")
+	@Column(name = "payment_date")
 	private Date paymentDateTime;
 	
 	@OneToOne
@@ -74,6 +72,4 @@ public class Payment {
 		this.learningSession = learningSession;
 	}
 	
-	
-
 }

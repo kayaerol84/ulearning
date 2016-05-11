@@ -7,9 +7,9 @@ import com.ulearning.model.User;
 
 public interface IFollowerDao {
 
-	void createFollower(Follower follower); // extends JpaRepository<Follower, Long>{
+	Follower createFollower(Follower follower); // extends JpaRepository<Follower, Long>{
 
-	void followUser(User user, User teacherOrLearner);
+	Follower followUser(User user, User teacherOrLearner);
 
 	List<User> getFollowers(Long userId);
 

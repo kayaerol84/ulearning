@@ -24,21 +24,21 @@ public class FollowerServiceImpl implements IFollowerService{
 	private ITeacherDao teacherDao;
 	
 	@Override
-	public void createFollower(Follower follower) {
+	public Follower createFollower(Follower follower) {
 		// TODO Auto-generated method stub
-		followerDao.createFollower(follower);
+		return followerDao.createFollower(follower);
 	}
 
 	@Override
-	public void followTeacher(User user, Teacher teacher) {
+	public Follower followTeacher(User user, Teacher teacher) {
 		// TODO Auto-generated method stub
-		followerDao.followUser(user, teacher);		
+		return followerDao.followUser(user, teacher);		
 	}
 
 	@Override
-	public void followLearner(User user, Learner learner) {
+	public Follower followLearner(User user, Learner learner) {
 		// TODO Auto-generated method stub
-		followerDao.followUser(user, learner);
+		return followerDao.followUser(user, learner);
 	}
 
 	@Override

@@ -5,7 +5,10 @@ import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -40,9 +43,15 @@ public class Training {
 	@Basic
 	private Long duration;
 	
-	@Basic
+	@Column
+	@Convert(converter=BooleanToStringConverter.class)
 	private Boolean available;
 	
+	@Enumerated(EnumType.STRING)
+	private Level level;
+	
+	@Enumerated(EnumType.STRING)
+	private Language language;
 	// TODO
 	@ManyToMany
 	@JoinTable(

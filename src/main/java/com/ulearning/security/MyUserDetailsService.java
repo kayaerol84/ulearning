@@ -26,7 +26,7 @@ import com.ulearning.service.ILoginAttemptService;
 public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private IUserDao userRepository;
+    private IUserDao userDao;
 
     @Autowired
     private ILoginAttemptService loginAttemptService;
@@ -48,7 +48,7 @@ public class MyUserDetailsService implements UserDetailsService {
         }
 
         try {
-            final User user = userRepository.findByEmail(email);
+            final User user = userDao.findByEmail(email);
             if (user == null) {
                 throw new UsernameNotFoundException("No user found with username: " + email);
             }

@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ulearning.model.Follower;
+import com.ulearning.model.Learner;
+import com.ulearning.model.Teacher;
 import com.ulearning.model.User;
 import com.ulearning.service.IFollowerService;
+import com.ulearning.service.IUserService;
 
 //@Controller
 @RestController
@@ -21,6 +25,10 @@ public class FollowerController {
 	@Autowired
 	@Qualifier("followerService")
 	private IFollowerService followerService;
+	
+	
+	@Autowired
+	private IUserService userService;
 	
 	@RequestMapping(value="/{userId}", method = RequestMethod.GET)
 	public @ResponseBody List<User> getFollowers(@PathVariable Long userId) {// @RequestParam(value="userId", defaultValue="12345") Long userId){
@@ -32,6 +40,24 @@ public class FollowerController {
 		followers.add(user);
 		//return Response.status(200).entity("getFollower is called").build();
 		return followers;
+	}
+	
+	
+	public @ResponseBody Follower followUser(@PathVariable Long userId, @PathVariable Long followedUser){
+		Follower follower = new Follower();
+		User user = userService.getUser(userId);
+		User followed = userService.getUser(followedUser);
+		if (followed instanceof Teacher){
+			followerService.followTeacher(user, (Teacher)followed);	
+		} else {
+			followerService.followLearner(user, (Learner)followed);
+		}
+		
+		return follower;
+	}
+	
+	public @ResponseBody String cancelFollowUser(@PathVariable Long userId, @PathVariable Long followedUser){
+		return "Stopped following" + "userName";
 	}
 
 	

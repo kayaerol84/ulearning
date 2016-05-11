@@ -1,6 +1,9 @@
 package com.ulearning.model;
 
+import java.util.Date;
+
 import javax.persistence.Basic;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -25,10 +30,8 @@ public class Skill {
 	@ManyToOne
 	@JoinColumn(name = "field_id", referencedColumnName = "id")
 	private Field field;
-	/*
-	 * One user can have multiple skills
-	 * There must be a user_skills table
-	 * User skills must have
-	 * 	private Long endorsementCount;
-	 */	
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "insert_date")
+	private Date insertDate;
 }

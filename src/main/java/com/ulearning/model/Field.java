@@ -1,9 +1,11 @@
 package com.ulearning.model;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="Field") 
@@ -22,6 +26,7 @@ public class Field {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
+	
 	@Basic
 	private String name;
 	
@@ -33,6 +38,14 @@ public class Field {
 	@ManyToOne 
 	@JoinColumn(name="parent_field_id", referencedColumnName = "id")
 	private Field parentField;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "insert_date")
+	private Date insertDate;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name = "last_update_date")
+	private Date updateDate;
 	
 	public Field() {
 		// JPA only

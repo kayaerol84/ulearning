@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ulearning.dao.IFollowerDao;
 import com.ulearning.model.Follower;
-import com.ulearning.model.Training;
 import com.ulearning.model.User;
 
 @Repository("followerDao")
@@ -64,24 +63,24 @@ public class FollowerDaoImpl implements IFollowerDao {
         }
 	}
 
-	public Training get(Long id) {
+	public Follower get(Long id) {
 		return null;
 	}
 
 
 
 	@Override
-	public void createFollower(Follower follower) {
+	public Follower createFollower(Follower follower) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 
 
 	@Override
-	public void followUser(User user, User teacherOrLearner) {
+	public Follower followUser(User user, User teacherOrLearner) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 

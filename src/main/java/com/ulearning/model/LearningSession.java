@@ -15,13 +15,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Digits;
-import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name="learning_session")
@@ -30,10 +27,6 @@ public class LearningSession {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	
-	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="teacher_id")
-	private Teacher teacher;
 	
 	// One session can have multipler learners (students)
 	@ManyToMany
@@ -59,23 +52,25 @@ public class LearningSession {
 	private Float period;
 
 	@Digits(integer=25, fraction=2)
-	@Column(name = "ACTUAL_COST", precision = 25, scale = 2, nullable = false)
+	@Column(name = "actual_cost", precision = 25, scale = 2, nullable = false)
 	private BigDecimal actualCost;
+	
 	@Digits(integer=25, fraction=2)
-	@Column(name = "ESTIMATED_COST", precision = 25, scale = 2, nullable = true)
+	@Column(name = "estimated_cost", precision = 25, scale = 2, nullable = true)
 	private BigDecimal estimatedCost;
+	
+
+	public LearningSession() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Teacher getTeacher() {
-		return teacher;
-	}
-	public void setTeacher(Teacher teacher) {
-		this.teacher = teacher;
-	}
+	
 	public List<Learner> getLearnerList() {
 		return learnerList;
 	}

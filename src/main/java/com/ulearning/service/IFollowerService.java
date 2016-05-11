@@ -9,9 +9,9 @@ import com.ulearning.model.User;
 
 public interface IFollowerService {
 
-	void createFollower(Follower follower);
-	void followTeacher(User user, Teacher teacher);
-	void followLearner(User user, Learner learner);
+	Follower createFollower(Follower follower);
+	Follower followTeacher(User user, Teacher teacher);
+	Follower followLearner(User user, Learner learner);
 	List<User> getFollowers(Long userId);
 	List<User> getFollowedUsers(Long userId);
 }

@@ -33,14 +33,19 @@ public class Address {
 	
 	@Basic
 	private String street;
+	
 	@Basic
 	private String houseNumber;
+	
 	@Basic
 	private String postCode;
+	
 	@Basic
 	private String city;
+	
 	@Basic
 	private String state;
+	
 	@Basic // Enum
 	private String country;
 

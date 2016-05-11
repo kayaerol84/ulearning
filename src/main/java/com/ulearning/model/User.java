@@ -1,12 +1,12 @@
 package com.ulearning.model;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
+import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -22,17 +22,14 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "Users")
 @Inheritance(strategy = InheritanceType.JOINED)
-//@XmlRootElement(name = "User") // only needed if we also want to generate XML
 public class User {
-	
-	
+		
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -70,8 +67,8 @@ public class User {
 
 	// TODO how to endorse a user
 	// trigger on Ranking table
-	@Column(precision=3, scale=5) 
-	private Float averageScore;
+	/*@Column(precision=3, scale=5) 
+	private Float averageScore;*/
 
 	@OneToMany(mappedBy = "userId")	
 	private List<Address> addresses;
@@ -88,7 +85,8 @@ public class User {
 	@Column(name="last_update_date")
 	private Date lastUpdateDate;
 
-	@Basic
+	@Column
+	@Convert(converter=BooleanToStringConverter.class)
 	private boolean enabled;
 
     @ManyToMany
@@ -137,13 +135,13 @@ public class User {
 		this.skills = skills;
 	}
 
-	public Float getAverageScore() {
+	/*public Float getAverageScore() {
 		return averageScore;
 	}
 
 	public void setAverageScore(Float averageScore) {
 		this.averageScore = averageScore;
-	}
+	}*/
 
 	public List<Address> getAddresses() {
 		return addresses;
