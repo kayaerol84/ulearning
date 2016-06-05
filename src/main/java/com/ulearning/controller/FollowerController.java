@@ -19,7 +19,6 @@ import com.ulearning.service.IUserService;
 
 //@Controller
 @RestController
-@RequestMapping("/followers")
 public class FollowerController {
 
 	@Autowired
@@ -30,19 +29,13 @@ public class FollowerController {
 	@Autowired
 	private IUserService userService;
 	
-	@RequestMapping(value="/{userId}", method = RequestMethod.GET)
+	@RequestMapping(value="/{userId}/followers", method = RequestMethod.GET)
 	public @ResponseBody List<User> getFollowers(@PathVariable Long userId) {// @RequestParam(value="userId", defaultValue="12345") Long userId){
 		List<User> followers = followerService.getFollowers(userId);
-		//List<User> followers = new ArrayList<>(); 
-		User user = new User();
-		user.setId(userId);
-		user.setName("Osman");
-		followers.add(user);
-		//return Response.status(200).entity("getFollower is called").build();
 		return followers;
 	}
 	
-	
+	@RequestMapping(value="/{userId}/follow", method = RequestMethod.POST)	
 	public @ResponseBody Follower followUser(@PathVariable Long userId, @PathVariable Long followedUser){
 		Follower follower = new Follower();
 		User user = userService.getUser(userId);
@@ -56,7 +49,9 @@ public class FollowerController {
 		return follower;
 	}
 	
+	@RequestMapping(value="/{userId}/cancelFollowing", method = RequestMethod.POST)	
 	public @ResponseBody String cancelFollowUser(@PathVariable Long userId, @PathVariable Long followedUser){
+		followerService.cancelFollowing(userId, followedUser);
 		return "Stopped following" + "userName";
 	}
 

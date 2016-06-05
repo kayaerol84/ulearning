@@ -1,12 +1,14 @@
 package com.ulearning.dao.impl;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ulearning.dao.ILearnerDao;
+import com.ulearning.model.Address;
 import com.ulearning.model.Learner;
-import com.ulearning.model.Training;
 
 @Repository("learnerDao")
 public class LearnerDaoImpl implements ILearnerDao {
@@ -21,10 +23,10 @@ public class LearnerDaoImpl implements ILearnerDao {
 	@Autowired
 	SessionFactory sessionFactory; 
 
-	public Long save(Learner learner) {
+	public void save(Learner learner) {
 
 		// after save, return generated ID
-		return 0L;
+		//return 0L;
 	}
 
 	public void update(Learner learner) {
@@ -46,6 +48,18 @@ public class LearnerDaoImpl implements ILearnerDao {
 	}
 
 	public Learner get(Long id) {
+		return null;
+	}
+
+	@Override
+	public List<Learner> getLearnersByLocation(Address location) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Learner> getLearnersByName(String name) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -33,6 +33,18 @@ public class FeedbackController {
 		//return Response.status(200).entity("getFollower is called").build();
 		return feedbacks;
 	}
+	@RequestMapping(value="/{id}", method = RequestMethod.GET)
+	public @ResponseBody Feedback getFeedback(@PathVariable Long id) {// @RequestParam(value="userId", defaultValue="12345") Long userId){
+		Feedback feedback = feedbackService.getFeedback(id);
+		return feedback;
+	}
+	
+	@RequestMapping(value="/save", method = RequestMethod.POST)
+	public @ResponseBody Long createFeedback(@PathVariable Feedback feedback) {// @RequestParam(value="userId", defaultValue="12345") Long userId){
+		
+		return feedbackService.addFeedback(feedback);
+		
+	}
 
 	public IFeedbackService getFeedbackService() {
 		return feedbackService;

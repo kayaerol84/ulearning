@@ -21,7 +21,7 @@ public class LearnerServiceImpl implements ILearnerService{
 	@Override
 	public Learner getLearner(Long id) {
 		// TODO Auto-generated method stub
-		return null;
+		return learnerDao.get(id);
 	}
 
 	@Override
@@ -31,9 +31,9 @@ public class LearnerServiceImpl implements ILearnerService{
 	}
 
 	@Override
-	public void addLearner(Learner learner) {
+	public Long addLearner(Learner learner) {
 		// TODO Auto-generated method stub
-		
+		return 0L;
 	}
 
 	@Override
@@ -43,9 +43,9 @@ public class LearnerServiceImpl implements ILearnerService{
 	}
 
 	@Override
-	public void updateLearner(Learner learner) {
+	public Long updateLearner(Learner learner) {
 		// TODO Auto-generated method stub
-		
+		return 0L;
 	}
 
 	public ILearnerDao getLearnerDao() {
@@ -55,7 +55,4 @@ public class LearnerServiceImpl implements ILearnerService{
 	public void setLearnerDao(ILearnerDao learnerDao) {
 		this.learnerDao = learnerDao;
 	}
-	
-	
-
 }

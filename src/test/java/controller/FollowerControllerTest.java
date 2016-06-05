@@ -7,11 +7,13 @@ import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite.SuiteClasses;
+import org.mockito.InjectMocks;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import com.ulearning.controller.FollowerController;
 import com.ulearning.model.Follower;
 import com.ulearning.model.User;
+import com.ulearning.service.impl.FollowerServiceImpl;
 
 @RunWith(MockitoJUnitRunner.class)
 //@RunWith(Suite.class)
@@ -20,6 +22,9 @@ public class FollowerControllerTest {
 
 	@Rule
 	public TemporaryFolder temp = new TemporaryFolder();
+	
+	@InjectMocks
+	private FollowerServiceImpl followerService;
 	
 	@Test
 	public void test() {

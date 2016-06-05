@@ -27,9 +27,9 @@ public class FeedbackServiceImpl implements IFeedbackService{
 	}
 
 	@Override
-	public void addFeedback(Feedback feedback) {
+	public Long addFeedback(Feedback feedback) {
 		// TODO Auto-generated method stub
-		
+		return 0L;
 	}
 
 	@Override

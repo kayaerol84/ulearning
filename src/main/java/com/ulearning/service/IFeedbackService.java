@@ -6,7 +6,7 @@ import com.ulearning.model.Feedback;
 
 public interface IFeedbackService {
 
-	void addFeedback(Feedback feedback);
+	Long addFeedback(Feedback feedback);
 	Feedback getFeedback(Long id);
 	List<Feedback> getFeedbacks(Long userId);
 	void warnAdmin(Feedback feedback);

@@ -9,7 +9,7 @@ public interface ILearnerService {
 
 	public Learner getLearner(Long id);
 	public List<Learner> getLearners();
-	public void addLearner(Learner learner);
+	public Long addLearner(Learner learner);
 	public List<Learner> getLearnersByLocation(Address address);
-	public void updateLearner(Learner learner);
+	public Long updateLearner(Learner learner);
 }

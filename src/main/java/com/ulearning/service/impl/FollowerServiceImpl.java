@@ -63,6 +63,12 @@ public class FollowerServiceImpl implements IFollowerService{
 	public void setFollowerDao(IFollowerDao followerDao) {
 		this.followerDao = followerDao;
 	}
+
+	@Override
+	public void cancelFollowing(Long userId, Long followedUser) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 

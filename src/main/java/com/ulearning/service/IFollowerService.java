@@ -14,4 +14,5 @@ public interface IFollowerService {
 	Follower followLearner(User user, Learner learner);
 	List<User> getFollowers(Long userId);
 	List<User> getFollowedUsers(Long userId);
+	void cancelFollowing(Long userId, Long followedUser);
 }
