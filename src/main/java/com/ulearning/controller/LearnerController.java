@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ulearning.model.Address;
 import com.ulearning.model.Learner;
-import com.ulearning.service.ILearnerService;
+import com.ulearning.service.LearnerService;
 
 @Controller
 @RequestMapping(value="/learner")
@@ -22,7 +22,7 @@ public class LearnerController {
 
 	@Autowired
 	@Qualifier("learnerService")
-	private ILearnerService learnerService;
+	private LearnerService learnerService;
 	
 	@RequestMapping(value="/{userid}", method = RequestMethod.GET)
 	@Produces("application/json") 

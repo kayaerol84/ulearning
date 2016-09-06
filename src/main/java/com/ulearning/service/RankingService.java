@@ -5,7 +5,7 @@ import java.util.List;
 import com.ulearning.model.Ranking;
 import com.ulearning.model.User;
 
-public interface IRankingService {
+public interface RankingService {
 	
 	void scoreLearner(User evaluator, User evaluated, Float score);
 	void scoreTeacher(User evaluator, User evaluated, Float score);

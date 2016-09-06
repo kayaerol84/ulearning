@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ulearning.service.IPaymentService;
+import com.ulearning.service.PaymentService;
 
 @Controller
 //@RequestMapping("/lesson")
@@ -20,7 +20,7 @@ public class PaymentController {
 
 	@Autowired
 	@Qualifier("paymentService")
-	private IPaymentService paymentService;
+	private PaymentService paymentService;
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

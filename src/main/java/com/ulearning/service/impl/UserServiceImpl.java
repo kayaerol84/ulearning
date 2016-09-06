@@ -10,19 +10,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ulearning.dao.IUserDao;
+import com.ulearning.dao.UserDao;
 import com.ulearning.model.Address;
 import com.ulearning.model.Role;
 import com.ulearning.model.Skill;
 import com.ulearning.model.User;
-import com.ulearning.service.IUserService;
+import com.ulearning.service.UserService;
 
 @Service("userService")
 @Transactional
-public class UserServiceImpl implements IUserService {
+public class UserServiceImpl implements UserService {
 
 	@Inject
-	private IUserDao userDao;
+	private UserDao userDao;
 	
 	public User getUser(Long userid) {
 		// TODO Auto-generated method stub

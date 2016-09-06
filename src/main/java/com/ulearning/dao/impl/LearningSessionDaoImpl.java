@@ -9,13 +9,13 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.ulearning.dao.IFollowerDao;
-import com.ulearning.dao.ILearningSessionDao;
+import com.ulearning.dao.FollowerDao;
+import com.ulearning.dao.LearningSessionDao;
 import com.ulearning.model.LearningSession;
 import com.ulearning.model.Training;
 
 @Repository("learningSessionDao")
-public class LearningSessionDaoImpl implements ILearningSessionDao {
+public class LearningSessionDaoImpl implements LearningSessionDao {
 
 	@PersistenceUnit
 	private EntityManagerFactory entityManagerFactory;

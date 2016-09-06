@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ulearning.model.Feedback;
-import com.ulearning.service.IFeedbackService;
+import com.ulearning.service.FeedbackService;
 
 //@Controller
 @RestController
@@ -20,7 +20,7 @@ public class FeedbackController {
 
 	@Autowired
 	@Qualifier("feedbackService")
-	private IFeedbackService feedbackService;
+	private FeedbackService feedbackService;
 	
 	@RequestMapping(value="/{userId}", method = RequestMethod.GET)
 	public @ResponseBody List<Feedback> getFeedbacks(@PathVariable Long userId) {// @RequestParam(value="userId", defaultValue="12345") Long userId){
@@ -46,11 +46,11 @@ public class FeedbackController {
 		
 	}
 
-	public IFeedbackService getFeedbackService() {
+	public FeedbackService getFeedbackService() {
 		return feedbackService;
 	}
 
-	public void setFeedbackService(IFeedbackService feedbackService) {
+	public void setFeedbackService(FeedbackService feedbackService) {
 		this.feedbackService = feedbackService;
 	}
 

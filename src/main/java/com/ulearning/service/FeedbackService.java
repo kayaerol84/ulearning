@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.ulearning.model.Feedback;
 
-public interface IFeedbackService {
+public interface FeedbackService {
 
 	Long addFeedback(Feedback feedback);
 	Feedback getFeedback(Long id);

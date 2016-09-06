@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.ulearning.model.Feedback;
 
-public interface IFeedbackDao {
+public interface FeedbackDao {
 
 	void createFeedback(Feedback feedback); 
 

@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
-import com.ulearning.service.ILoginAttemptService;
+import com.ulearning.service.LoginAttemptService;
 
 @Service
-public class LoginAttemptServiceImpl implements ILoginAttemptService {
+public class LoginAttemptServiceImpl implements LoginAttemptService {
 
     private final int MAX_ATTEMPT = 10;
     private LoadingCache<String, Integer> attemptsCache;

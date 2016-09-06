@@ -11,12 +11,12 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.ulearning.dao.IUserDao;
+import com.ulearning.dao.UserDao;
 import com.ulearning.model.Training;
 import com.ulearning.model.User;
 
 @Repository("userDao")
-public class UserDaoImpl implements IUserDao {
+public class UserDaoImpl implements UserDao {
 
 	/*@PersistenceUnit
 	private EntityManagerFactory entityManagerFactory;*/

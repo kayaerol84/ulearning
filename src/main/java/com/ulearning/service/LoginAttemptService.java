@@ -1,6 +1,6 @@
 package com.ulearning.service;
 
-public interface ILoginAttemptService {
+public interface LoginAttemptService {
 
 	boolean isBlocked(String key);
 

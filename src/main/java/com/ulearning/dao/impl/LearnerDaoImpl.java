@@ -6,12 +6,12 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.ulearning.dao.ILearnerDao;
+import com.ulearning.dao.LearnerDao;
 import com.ulearning.model.Address;
 import com.ulearning.model.Learner;
 
 @Repository("learnerDao")
-public class LearnerDaoImpl implements ILearnerDao {
+public class LearnerDaoImpl implements LearnerDao {
 
 	/*@PersistenceUnit
 	private EntityManagerFactory entityManagerFactory;

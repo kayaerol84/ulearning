@@ -6,7 +6,7 @@ import com.ulearning.model.Address;
 import com.ulearning.model.Skill;
 import com.ulearning.model.Teacher;
 
-public interface ITeacherService {
+public interface TeacherService {
 
 	void addTeacher(Teacher teacher);
 	Teacher getTeacher(Long id);

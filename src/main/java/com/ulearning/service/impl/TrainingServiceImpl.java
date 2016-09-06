@@ -6,22 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ulearning.dao.ITrainingDao;
+import com.ulearning.dao.TrainingDao;
 import com.ulearning.model.Address;
 import com.ulearning.model.Field;
 import com.ulearning.model.Learner;
 import com.ulearning.model.LearningSession;
 import com.ulearning.model.Teacher;
 import com.ulearning.model.Training;
-import com.ulearning.service.ILearnerService;
-import com.ulearning.service.ITrainingService;
+import com.ulearning.service.LearnerService;
+import com.ulearning.service.TrainingService;
 
 @Service("trainingService")
 @Transactional
-public class TrainingServiceImpl implements ITrainingService{
+public class TrainingServiceImpl implements TrainingService{
 
 	@Autowired
-	private ITrainingDao trainingDao;
+	private TrainingDao trainingDao;
 
 	@Override
 	public void addTraining(Training training) {
@@ -65,11 +65,11 @@ public class TrainingServiceImpl implements ITrainingService{
 		return null;
 	}
 
-	public ITrainingDao getTrainingDao() {
+	public TrainingDao getTrainingDao() {
 		return trainingDao;
 	}
 
-	public void setTrainingDao(ITrainingDao trainingDao) {
+	public void setTrainingDao(TrainingDao trainingDao) {
 		this.trainingDao = trainingDao;
 	}
 	

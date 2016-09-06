@@ -16,20 +16,20 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ulearning.dao.IUserDao;
+import com.ulearning.dao.UserDao;
 import com.ulearning.model.Role;
 import com.ulearning.model.User;
-import com.ulearning.service.ILoginAttemptService;
+import com.ulearning.service.LoginAttemptService;
 
 @Service("userDetailsService")
 @Transactional
 public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private IUserDao userDao;
+    private UserDao userDao;
 
     @Autowired
-    private ILoginAttemptService loginAttemptService;
+    private LoginAttemptService loginAttemptService;
 
     @Autowired
     private HttpServletRequest request;

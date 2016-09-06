@@ -5,7 +5,7 @@ import java.util.List;
 import com.ulearning.model.Learner;
 import com.ulearning.model.LearningSession;
 
-public interface ILearningSessionService {
+public interface LearningSessionService {
 
 	void addNewSession(LearningSession session);
 	LearningSession getLearningSession(Long id);

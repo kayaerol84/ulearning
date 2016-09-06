@@ -9,13 +9,13 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.ulearning.dao.IFollowerDao;
-import com.ulearning.dao.IPaymentDao;
+import com.ulearning.dao.FollowerDao;
+import com.ulearning.dao.PaymentDao;
 import com.ulearning.model.Payment;
 import com.ulearning.model.Training;
 
 @Repository("paymentDao")
-public class PaymentDaoImpl implements IPaymentDao {
+public class PaymentDaoImpl implements PaymentDao {
 
 	@PersistenceUnit
 	private EntityManagerFactory entityManagerFactory;

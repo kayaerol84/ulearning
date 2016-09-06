@@ -1,5 +1,5 @@
 package com.ulearning.dao;
 
-public interface IPaymentDao {
+public interface RequestDao {
 
 }

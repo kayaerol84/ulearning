@@ -6,13 +6,13 @@ import java.sql.SQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ulearning.service.IUserService;
+import com.ulearning.service.UserService;
 
 @Service("loginDelegate")
 public class LoginDelegate
 {
 	@Autowired
-	private IUserService userService;
+	private UserService userService;
 
 	
 	public boolean isValidUser(String username, String password) throws SQLException
@@ -21,12 +21,12 @@ public class LoginDelegate
 	}
 
 
-	public IUserService getUserService() {
+	public UserService getUserService() {
 		return userService;
 	}
 
 
-	public void setUserService(IUserService userService) {
+	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
 	

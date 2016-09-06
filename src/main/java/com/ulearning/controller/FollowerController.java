@@ -14,8 +14,8 @@ import com.ulearning.model.Follower;
 import com.ulearning.model.Learner;
 import com.ulearning.model.Teacher;
 import com.ulearning.model.User;
-import com.ulearning.service.IFollowerService;
-import com.ulearning.service.IUserService;
+import com.ulearning.service.FollowerService;
+import com.ulearning.service.UserService;
 
 //@Controller
 @RestController
@@ -23,11 +23,11 @@ public class FollowerController {
 
 	@Autowired
 	@Qualifier("followerService")
-	private IFollowerService followerService;
+	private FollowerService followerService;
 	
 	
 	@Autowired
-	private IUserService userService;
+	private UserService userService;
 	
 	@RequestMapping(value="/{userId}/followers", method = RequestMethod.GET)
 	public @ResponseBody List<User> getFollowers(@PathVariable Long userId) {// @RequestParam(value="userId", defaultValue="12345") Long userId){
@@ -56,11 +56,11 @@ public class FollowerController {
 	}
 
 	
-	public IFollowerService getFollowerService() {
+	public FollowerService getFollowerService() {
 		return followerService;
 	}
 
-	public void setFollowerService(IFollowerService followerService) {
+	public void setFollowerService(FollowerService followerService) {
 		this.followerService = followerService;
 	}
 	

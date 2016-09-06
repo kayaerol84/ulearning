@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 import com.ulearning.model.User;
 
-public interface IUserDao {
+public interface UserDao {
 
 	User save(User user);
 

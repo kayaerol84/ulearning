@@ -14,13 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ulearning.dao.IFollowerDao;
+import com.ulearning.dao.FollowerDao;
 import com.ulearning.model.Follower;
 import com.ulearning.model.User;
 
 @Repository("followerDao")
 @Transactional
-public class FollowerDaoImpl implements IFollowerDao {
+public class FollowerDaoImpl implements FollowerDao {
 
 	@Autowired  
 	SessionFactory sessionFactory;

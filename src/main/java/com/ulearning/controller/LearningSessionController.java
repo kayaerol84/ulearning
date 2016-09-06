@@ -9,14 +9,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
 import com.ulearning.model.LearningSession;
-import com.ulearning.service.ILearningSessionService;
+import com.ulearning.service.LearningSessionService;
 
 @Controller
 public class LearningSessionController {
 
 	@Autowired
 	@Qualifier("learningSessionService")
-	private ILearningSessionService learningSessionService;
+	private LearningSessionService learningSessionService;
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

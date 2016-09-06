@@ -6,17 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ulearning.dao.ILearnerDao;
+import com.ulearning.dao.LearnerDao;
 import com.ulearning.model.Address;
 import com.ulearning.model.Learner;
-import com.ulearning.service.ILearnerService;
+import com.ulearning.service.LearnerService;
 
 @Service("learnerService")
 @Transactional
-public class LearnerServiceImpl implements ILearnerService{
+public class LearnerServiceImpl implements LearnerService{
 
 	@Autowired
-	private ILearnerDao learnerDao;
+	private LearnerDao learnerDao;
 	
 	@Override
 	public Learner getLearner(Long id) {
@@ -48,11 +48,11 @@ public class LearnerServiceImpl implements ILearnerService{
 		return 0L;
 	}
 
-	public ILearnerDao getLearnerDao() {
+	public LearnerDao getLearnerDao() {
 		return learnerDao;
 	}
 
-	public void setLearnerDao(ILearnerDao learnerDao) {
+	public void setLearnerDao(LearnerDao learnerDao) {
 		this.learnerDao = learnerDao;
 	}
 }

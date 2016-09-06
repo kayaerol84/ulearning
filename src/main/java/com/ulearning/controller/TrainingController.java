@@ -8,14 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
-import com.ulearning.service.ITrainingService;
+import com.ulearning.service.TrainingService;
 
 @Controller
 public class TrainingController {
 
 	@Autowired
 	@Qualifier("trainingService")
-	private ITrainingService trainingService;
+	private TrainingService trainingService;
 	
 	/*@GET
 	@Produces(MediaType.APPLICATION_JSON)*/

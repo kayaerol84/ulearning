@@ -7,7 +7,7 @@ import com.ulearning.model.Learner;
 import com.ulearning.model.Teacher;
 import com.ulearning.model.User;
 
-public interface IFollowerService {
+public interface FollowerService {
 
 	Follower createFollower(Follower follower);
 	Follower followTeacher(User user, Teacher teacher);

@@ -6,19 +6,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ulearning.dao.IRequestDao;
+import com.ulearning.dao.RequestDao;
 import com.ulearning.model.Request;
 import com.ulearning.model.Teacher;
 import com.ulearning.model.Training;
 import com.ulearning.model.User;
-import com.ulearning.service.IRequestService;
+import com.ulearning.service.RequestService;
 
 @Service("requestService")
 @Transactional
-public class RequestServiceImpl implements IRequestService{
+public class RequestServiceImpl implements RequestService{
 
 	@Autowired
-	private IRequestDao requestDao;
+	private RequestDao requestDao;
 
 	@Override
 	public void requestTeacher(User user, Teacher teacher) {
@@ -62,11 +62,11 @@ public class RequestServiceImpl implements IRequestService{
 		return null;
 	}
 
-	public IRequestDao getRequestDao() {
+	public RequestDao getRequestDao() {
 		return requestDao;
 	}
 
-	public void setRequestDao(IRequestDao requestDao) {
+	public void setRequestDao(RequestDao requestDao) {
 		this.requestDao = requestDao;
 	}
 	

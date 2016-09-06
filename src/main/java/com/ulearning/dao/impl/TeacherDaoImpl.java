@@ -9,11 +9,11 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.ulearning.dao.ITeacherDao;
+import com.ulearning.dao.TeacherDao;
 import com.ulearning.model.Teacher;
 
 @Repository("teacherDao")
-public class TeacherDaoImpl implements ITeacherDao {
+public class TeacherDaoImpl implements TeacherDao {
 
 	@PersistenceUnit
 	private EntityManagerFactory entityManagerFactory;

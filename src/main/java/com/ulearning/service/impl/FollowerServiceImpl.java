@@ -6,22 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ulearning.dao.IFollowerDao;
-import com.ulearning.dao.ITeacherDao;
+import com.ulearning.dao.FollowerDao;
+import com.ulearning.dao.TeacherDao;
 import com.ulearning.model.Follower;
 import com.ulearning.model.Learner;
 import com.ulearning.model.Teacher;
 import com.ulearning.model.User;
-import com.ulearning.service.IFollowerService;
+import com.ulearning.service.FollowerService;
 
 @Service("followerService")
 @Transactional
-public class FollowerServiceImpl implements IFollowerService{
+public class FollowerServiceImpl implements FollowerService{
 
 	@Autowired
-	private IFollowerDao followerDao;
+	private FollowerDao followerDao;
 	
-	private ITeacherDao teacherDao;
+	private TeacherDao teacherDao;
 	
 	@Override
 	public Follower createFollower(Follower follower) {
@@ -56,11 +56,11 @@ public class FollowerServiceImpl implements IFollowerService{
 		return followerDao.getFollowedUsers(userId);
 	}
 
-	public IFollowerDao getFollowerDao() {
+	public FollowerDao getFollowerDao() {
 		return followerDao;
 	}
 
-	public void setFollowerDao(IFollowerDao followerDao) {
+	public void setFollowerDao(FollowerDao followerDao) {
 		this.followerDao = followerDao;
 	}
 

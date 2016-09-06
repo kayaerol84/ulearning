@@ -7,7 +7,7 @@ import com.ulearning.model.Teacher;
 import com.ulearning.model.Training;
 import com.ulearning.model.User;
 
-public interface IRequestService {
+public interface RequestService {
 
 	void requestTeacher(User user, Teacher teacher);
 		

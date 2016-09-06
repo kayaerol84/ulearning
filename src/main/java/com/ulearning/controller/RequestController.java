@@ -10,14 +10,14 @@ import org.springframework.stereotype.Controller;
 
 import com.ulearning.model.Training;
 import com.ulearning.model.User;
-import com.ulearning.service.IRequestService;
+import com.ulearning.service.RequestService;
 
 @Controller
 @Path("/request")
 public class RequestController {
 
 	@Autowired
-	private IRequestService requestService;	
+	private RequestService requestService;	
 	
 	@GET
 	@Produces("application/json")

@@ -6,7 +6,7 @@ import com.ulearning.model.Address;
 import com.ulearning.model.Skill;
 import com.ulearning.model.User;
 
-public interface IUserService {
+public interface UserService {
 
 	User getUser(Long userid);
 	User addUser(User user);

@@ -6,23 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ulearning.dao.IFeedbackDao;
+import com.ulearning.dao.FeedbackDao;
 import com.ulearning.model.Feedback;
-import com.ulearning.service.IFeedbackService;
+import com.ulearning.service.FeedbackService;
 
 @Service("feedbackService")
 @Transactional
-public class FeedbackServiceImpl implements IFeedbackService{
+public class FeedbackServiceImpl implements FeedbackService{
 
 	@Autowired
-	private IFeedbackDao feedbackDao;
+	private FeedbackDao feedbackDao;
 
 	
-	public IFeedbackDao getFeedbackDao() {
+	public FeedbackDao getFeedbackDao() {
 		return feedbackDao;
 	}
 
-	public void setFeedbackDao(IFeedbackDao feedbackDao) {
+	public void setFeedbackDao(FeedbackDao feedbackDao) {
 		this.feedbackDao = feedbackDao;
 	}
 

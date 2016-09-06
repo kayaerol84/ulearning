@@ -9,11 +9,11 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.ulearning.dao.IRequestDao;
+import com.ulearning.dao.RequestDao;
 import com.ulearning.model.Request;
 
 @Repository("requestDao")
-public class RequestDaoImpl implements IRequestDao {
+public class RequestDaoImpl implements RequestDao {
 
 	@PersistenceUnit
 	private EntityManagerFactory entityManagerFactory;

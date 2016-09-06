@@ -13,12 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ulearning.dao.IFeedbackDao;
+import com.ulearning.dao.FeedbackDao;
 import com.ulearning.model.Feedback;
 
 @Repository("feedbackDao")
 @Transactional
-public class FeedbackDaoImpl implements IFeedbackDao {
+public class FeedbackDaoImpl implements FeedbackDao {
 
 	@Autowired  
 	SessionFactory sessionFactory;

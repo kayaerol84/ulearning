@@ -9,13 +9,13 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.ulearning.dao.IFollowerDao;
-import com.ulearning.dao.ISkillDao;
+import com.ulearning.dao.FollowerDao;
+import com.ulearning.dao.SkillDao;
 import com.ulearning.model.Skill;
 import com.ulearning.model.Training;
 
 @Repository("skillDao")
-public class SkillDaoImpl implements ISkillDao {
+public class SkillDaoImpl implements SkillDao {
 
 	@PersistenceUnit
 	private EntityManagerFactory entityManagerFactory;

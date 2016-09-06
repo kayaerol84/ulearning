@@ -6,16 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ulearning.dao.IPaymentDao;
+import com.ulearning.dao.PaymentDao;
 import com.ulearning.model.Payment;
-import com.ulearning.service.IPaymentService;
+import com.ulearning.service.PaymentService;
 
 @Service("paymentService")
 @Transactional
-public class PaymentServiceImpl implements IPaymentService{
+public class PaymentServiceImpl implements PaymentService{
 
 	@Autowired
-	private IPaymentDao paymentDao;
+	private PaymentDao paymentDao;
 
 	@Override
 	public void addPayment() {
@@ -41,11 +41,11 @@ public class PaymentServiceImpl implements IPaymentService{
 		return null;
 	}
 
-	public IPaymentDao getPaymentDao() {
+	public PaymentDao getPaymentDao() {
 		return paymentDao;
 	}
 
-	public void setPaymentDao(IPaymentDao paymentDao) {
+	public void setPaymentDao(PaymentDao paymentDao) {
 		this.paymentDao = paymentDao;
 	}	
 }

@@ -7,13 +7,13 @@ import org.springframework.security.authentication.event.AuthenticationSuccessEv
 import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Component;
 
-import com.ulearning.service.ILoginAttemptService;
+import com.ulearning.service.LoginAttemptService;
 
 @Component
 public class AuthenticationSuccessEventListener implements ApplicationListener<AuthenticationSuccessEvent> {
 
     @Autowired
-    private ILoginAttemptService loginAttemptService;
+    private LoginAttemptService loginAttemptService;
     
     @Override
     public void onApplicationEvent(final AuthenticationSuccessEvent e) {

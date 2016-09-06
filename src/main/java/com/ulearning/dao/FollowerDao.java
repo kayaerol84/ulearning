@@ -5,7 +5,7 @@ import java.util.List;
 import com.ulearning.model.Follower;
 import com.ulearning.model.User;
 
-public interface IFollowerDao {
+public interface FollowerDao {
 
 	Follower createFollower(Follower follower); // extends JpaRepository<Follower, Long>{
 

@@ -27,7 +27,7 @@ public class FollowerControllerTest {
 	private FollowerServiceImpl followerService;
 	
 	@Test
-	public void test() {
+	public void testAddFollower() {
 		fail("Not yet implemented");
 	}
 	

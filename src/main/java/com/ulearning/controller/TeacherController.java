@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ulearning.model.Teacher;
-import com.ulearning.service.ITeacherService;
+import com.ulearning.service.TeacherService;
 
 @Controller
 @RequestMapping("/teacher")
@@ -18,7 +18,7 @@ public class TeacherController {
 
 	@Autowired
 	@Qualifier("teacherService")
-	private ITeacherService teacherService;
+	private TeacherService teacherService;
 	
 	@RequestMapping(value="/all", method = RequestMethod.GET)
 	public @ResponseBody Teacher findTeachers() {

@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 
 import com.ulearning.model.User;
-import com.ulearning.service.IUserService;
+import com.ulearning.service.UserService;
 import com.ulearning.service.impl.UserServiceImpl;
 
 @Controller
@@ -19,7 +19,7 @@ public class UserController {
 
 	@Autowired
 	@Qualifier("userService")
-	private IUserService userService;
+	private UserService userService;
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)

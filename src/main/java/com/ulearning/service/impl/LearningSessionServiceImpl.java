@@ -6,17 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ulearning.dao.ILearningSessionDao;
+import com.ulearning.dao.LearningSessionDao;
 import com.ulearning.model.Learner;
 import com.ulearning.model.LearningSession;
-import com.ulearning.service.ILearningSessionService;
+import com.ulearning.service.LearningSessionService;
 
 @Service("learningSessionService")
 @Transactional
-public class LearningSessionServiceImpl implements ILearningSessionService{
+public class LearningSessionServiceImpl implements LearningSessionService{
 
 	@Autowired
-	private ILearningSessionDao learningSessionDao;
+	private LearningSessionDao learningSessionDao;
 
 	@Override
 	public void addNewSession(LearningSession session) {
@@ -66,11 +66,11 @@ public class LearningSessionServiceImpl implements ILearningSessionService{
 		
 	}
 
-	public ILearningSessionDao getLearningSessionDao() {
+	public LearningSessionDao getLearningSessionDao() {
 		return learningSessionDao;
 	}
 
-	public void setLearningSessionDao(ILearningSessionDao learningSessionDao) {
+	public void setLearningSessionDao(LearningSessionDao learningSessionDao) {
 		this.learningSessionDao = learningSessionDao;
 	}
 	

@@ -8,7 +8,7 @@ import com.ulearning.model.LearningSession;
 import com.ulearning.model.Teacher;
 import com.ulearning.model.Training;
 
-public interface ITrainingService {
+public interface TrainingService {
 	void addTraining(Training training);
 	void updateTraining(Training training);
 	Training getTraining(Long id);

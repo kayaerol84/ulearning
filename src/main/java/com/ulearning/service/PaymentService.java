@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.ulearning.model.Payment;
 
-public interface IPaymentService {
+public interface PaymentService {
 
 	void addPayment();
 	Payment getPayment(Long id);

@@ -7,18 +7,18 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ulearning.dao.ITeacherDao;
+import com.ulearning.dao.TeacherDao;
 import com.ulearning.model.Address;
 import com.ulearning.model.Skill;
 import com.ulearning.model.Teacher;
-import com.ulearning.service.ITeacherService;
+import com.ulearning.service.TeacherService;
 
 @Service("teacherService")
 @Transactional
-public class TeacherServiceImpl implements ITeacherService{
+public class TeacherServiceImpl implements TeacherService{
 
 	@Inject
-	private ITeacherDao teacherDao;
+	private TeacherDao teacherDao;
 	
 	public void createTeacher(Teacher teacher) {
 		// TODO Auto-generated method stub
@@ -32,11 +32,11 @@ public class TeacherServiceImpl implements ITeacherService{
 		return null;
 	}
 
-	public ITeacherDao getTeacherDao() {
+	public TeacherDao getTeacherDao() {
 		return teacherDao;
 	}
 
-	public void setTeacherDao(ITeacherDao teacherDao) {
+	public void setTeacherDao(TeacherDao teacherDao) {
 		this.teacherDao = teacherDao;
 	}
 
